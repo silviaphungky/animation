@@ -1,0 +1,12 @@
+query FeaturedPublicAnimations($first: Int) {
+  featuredPublicAnimations(first: $first) {
+    edges {
+      node {
+        gifUrl
+        id
+        jsonUrl
+        name
+      }
+    }
+  }
+}

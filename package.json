@@ -6,21 +6,34 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typescript": "tsc --noemit"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.5.4",
+    "@tanstack/react-query": "^5.47.0",
+    "dayjs": "^1.11.11",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
+    "next": "14.2.4",
+    "partykit": "^0.0.107",
+    "partysocket": "^1.0.1",
     "react": "^18",
+    "react-colorful": "^5.6.1",
     "react-dom": "^18",
-    "next": "14.2.4"
+    "react-hook-form": "^7.52.0",
+    "socket.io-client": "^4.7.5",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "eslint-plugin-unused-imports": "^4.0.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "typescript": "^5"
   }
 }
