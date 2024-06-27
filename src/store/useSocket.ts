@@ -1,6 +1,5 @@
 import PartySocket from 'partysocket'
 import { create } from 'zustand'
-import { useChats } from './useChats'
 
 interface StoreType {
   ws: PartySocket

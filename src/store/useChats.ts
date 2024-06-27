@@ -1,7 +1,5 @@
 import { create } from 'zustand'
 
-import { Dispatch, SetStateAction } from 'react'
-
 interface StoreType {
   chats: Array<{
     message: string
