@@ -76,7 +76,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div>
+    <div className="px-6 pb-8">
       <div className="flex justify-between mt-4 mb-4">
         <h2 className="text-2xl font-semibold">Recently Workspaces</h2>
         <div>

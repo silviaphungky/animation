@@ -41,10 +41,14 @@ export interface Layer {
   gradientIndexes: Array<number | undefined>
 }
 
-export default function Home() {
+export default function Editor() {
   const { id } = useParams()
 
-  const { data = { animation: {} }, isFetched } = useGetAnimation(id as string)
+  const {
+    data = { animation: {} },
+    isFetched,
+    isLoading,
+  } = useGetAnimation(id as string)
 
   const animation = useEditAnimation((state) => state.animation)
   const setAnimation = useEditAnimation((state) => state.setAnimation)
@@ -143,11 +147,7 @@ export default function Home() {
   }, [animation])
 
   const content = {
-    Color: layers.length ? (
-      <ColorMenu layers={layers} setChangeCounter={setChangeCounter} />
-    ) : (
-      <Spinner />
-    ),
+    Color: <ColorMenu layers={layers} setChangeCounter={setChangeCounter} />,
     Setting: <SettingMenu setChangeCounter={setChangeCounter} />,
     Chat: <ChatMenu />,
   }
@@ -167,7 +167,7 @@ export default function Home() {
         />
       </Player>
       <RightBar selectedTab={selectedTab} setSelectedTab={setSelectedTab}>
-        {content[selectedTab]}
+        {isLoading ? <Spinner /> : content[selectedTab]}
       </RightBar>
     </div>
   )
