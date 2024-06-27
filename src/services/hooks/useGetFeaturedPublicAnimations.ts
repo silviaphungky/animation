@@ -1,4 +1,4 @@
-import QUERY from '@/service/graphql/query/featuredPublicAnimations.gql'
+import QUERY from '@/services/graphql/query/featuredPublicAnimations.gql'
 import { useQuery } from '@tanstack/react-query'
 import request from 'graphql-request'
 
