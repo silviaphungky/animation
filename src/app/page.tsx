@@ -119,7 +119,7 @@ export default function Home() {
         </div>
       )}
 
-      <h2 className="text-2xl font-semibold mb-2 mt-6">Templates</h2>
+      <h2 className="text-2xl font-semibold mb-4 mt-6">Templates</h2>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
         {isLoading ? (
