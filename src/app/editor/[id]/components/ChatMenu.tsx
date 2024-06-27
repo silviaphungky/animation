@@ -7,6 +7,7 @@ import { IconSend } from '@/components/Icons'
 import { SocketMessage, useSocket } from '@/store/useSocket'
 import { usernameKey } from '@/constants/key'
 import { Controller, useForm } from 'react-hook-form'
+import { useChats } from '@/store/useChats'
 
 const ChatMenu = () => {
   const ws = useSocket((state) => state.ws)
@@ -16,21 +17,16 @@ const ChatMenu = () => {
     },
   })
 
-  const [chatList, setChatList] = useState<
-    Array<{
-      message: string
-      sender: string
-      time: string
-    }>
-  >([])
+  const chats = useChats((state) => state.chats)
+  const setChats = useChats((state) => state.setChats)
 
   useEffect(() => {
     ws.addEventListener('message', (e) => {
       const data = e.data
       const parsedData = JSON.parse(data)
       if (parsedData.type === SocketMessage.NEW_CHAT) {
-        setChatList((prev) => [
-          ...prev,
+        setChats([
+          ...chats,
           {
             message: parsedData.message,
             sender: parsedData.sender,
@@ -52,27 +48,28 @@ const ChatMenu = () => {
       time: dayjs(new Date()).format('HH:mm'),
     }
 
-    setChatList((prev) => [
-      ...prev,
+    setChats([
+      ...chats,
       {
         message,
         sender: sender as string,
         time: dayjs(new Date()).format('HH:mm'),
       },
     ])
+
     ws.send(JSON.stringify(socketMessage))
     reset()
   }
 
   return (
     <div className="border-[1px] border-slate-300 rounded-md p-2 h-[70vh] relative">
-      {chatList.length === 0 ? (
+      {chats.length === 0 ? (
         <div className="text-sm text-slate-300 mb-4 text-center h-[80%]">
           No chat history
         </div>
       ) : (
         <div className="h-[80%] overflow-y-auto">
-          {chatList.map((item, index) => {
+          {chats.map((item, index) => {
             const isSender = item.sender === localStorage.getItem(usernameKey)
             return (
               <div

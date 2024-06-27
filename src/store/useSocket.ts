@@ -1,5 +1,6 @@
 import PartySocket from 'partysocket'
 import { create } from 'zustand'
+import { useChats } from './useChats'
 
 interface StoreType {
   ws: PartySocket
@@ -12,11 +13,13 @@ export enum SocketMessage {
   UPDATE_ANIMATION = 'update_animation',
 }
 
-const SocketStore = () => ({
-  ws: new PartySocket({
-    host: wsUrl,
-    room: 'my-room',
-  }),
-})
+const SocketStore = () => {
+  return {
+    ws: new PartySocket({
+      host: wsUrl,
+      room: 'my-room',
+    }),
+  }
+}
 
 export const useSocket = create<StoreType>(SocketStore)

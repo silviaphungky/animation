@@ -25,6 +25,7 @@ import useDebounce from '@/hooks/useDebounce'
 import { menu } from './components/RightBar'
 import { Abbv, LottieAssets } from './types'
 import { usernameKey } from '@/constants/key'
+import { useChats } from '@/store/useChats'
 
 export interface Layer {
   id: string | number
@@ -56,6 +57,8 @@ export default function Editor() {
   const animation = useEditAnimation((state) => state.animation)
   const setAnimation = useEditAnimation((state) => state.setAnimation)
   const ws = useSocket((state) => state.ws)
+  const chats = useChats((state) => state.chats)
+  const setChats = useChats((state) => state.setChats)
 
   const [username, setUsername] = useState('')
   const [layers, setLayers] = useState<Array<Layer>>([])
@@ -72,6 +75,15 @@ export default function Editor() {
       const parsedData = JSON.parse(data)
       if (parsedData.type === SocketMessage.UPDATE_ANIMATION) {
         setAnimation(parsedData.message)
+      } else if (parsedData.type === SocketMessage.NEW_CHAT) {
+        setChats([
+          ...chats,
+          {
+            message: parsedData.message,
+            sender: parsedData.sender,
+            time: parsedData.time,
+          },
+        ])
       }
     })
 
