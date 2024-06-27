@@ -11,7 +11,6 @@ import { IconLogout, IconPerson } from '@/components/Icons'
 
 import { PATHS } from '@/constants/paths'
 import { usernameKey } from '@/constants/key'
-import { Button } from '@/components'
 
 export const menu = ['Color', 'Setting', 'Chat']
 
