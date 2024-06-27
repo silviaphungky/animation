@@ -14,7 +14,7 @@ const Login = () => {
       username: '',
     },
   })
-  const { callback } = useParams()
+  const { callback } = useParams() as { callback?: string }
 
   const handleLogin = (value: { username: string }) => {
     router.push(callback ? callback : PATHS.HOME)
