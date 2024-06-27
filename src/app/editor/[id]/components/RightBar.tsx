@@ -5,12 +5,13 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { IconLogout, IconPerson } from '@/components/Icons'
 
 import { PATHS } from '@/constants/paths'
 import { usernameKey } from '@/constants/key'
+import { Button } from '@/components'
 
 export const menu = ['Color', 'Setting', 'Chat']
 
@@ -24,6 +25,7 @@ const RightBar = ({
   setSelectedTab: Dispatch<SetStateAction<'Color' | 'Setting' | 'Chat'>>
 }) => {
   const router = useRouter()
+  const pathname = usePathname()
 
   const [username, setUsername] = useState('')
 
@@ -61,15 +63,17 @@ const RightBar = ({
       </div>
 
       <div className="w-full text-right absolute bottom-[1rem] right-0 border-t-[1px] border-slate-300 py-4">
-        <div className="pl-4 flex justify-between">
-          <div className="pl-4 flex gap-2">
-            <IconPerson />
-            <div>{username}</div>
+        {username && (
+          <div className="pl-4 flex justify-between">
+            <div className="pl-4 flex gap-2">
+              <IconPerson />
+              <div>{username}</div>
+            </div>
+            <div className="pr-4 cursor-pointer" onClick={handleLogout}>
+              <IconLogout />
+            </div>
           </div>
-          <div className="pr-4 cursor-pointer" onClick={handleLogout}>
-            <IconLogout />
-          </div>
-        </div>
+        )}
       </div>
     </div>
   )
