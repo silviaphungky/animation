@@ -15,6 +15,7 @@
     "dayjs": "^1.11.11",
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.0",
+    "graphql-tag": "^2.12.6",
     "next": "14.2.4",
     "partykit": "^0.0.107",
     "partysocket": "^1.0.1",
