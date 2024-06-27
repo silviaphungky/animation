@@ -49,3 +49,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   3. Zustand -> State management
   4. React Tan Query -> API fetcher
   5. @lottiefiles/react-lottie-player -> Lottie player
+  6. MongoDB + NodeJs + ExpressJs -> service for keep track animation changes
