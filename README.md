@@ -45,8 +45,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 **Depedencies**
   -
   1. Tailwind Css -> Styling
-  2. Partysocket -> Real time chats & real time update animation
+  2. Partysocket -> Real time chats & real time update animation (https://github.com/silviaphungky/socket-animation)
   3. Zustand -> State management
   4. React Tan Query -> API fetcher
   5. @lottiefiles/react-lottie-player -> Lottie player
-  6. MongoDB + NodeJs + ExpressJs -> service for keep track animation changes
+  6. MongoDB + NodeJs + ExpressJs -> service for keep track animation changes (https://github.com/silviaphungky/server-animation)
