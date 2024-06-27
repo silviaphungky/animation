@@ -4,7 +4,7 @@ import { IconBatik } from '@/components/Icons'
 import { usernameKey } from '@/constants/key'
 import { PATHS } from '@/constants/paths'
 
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
 
 const Login = () => {
@@ -14,7 +14,8 @@ const Login = () => {
       username: '',
     },
   })
-  const { callback } = useParams() as { callback?: string }
+  const params = useSearchParams()
+  const callback = params.get('callback')
 
   const handleLogin = (value: { username: string }) => {
     router.push(callback ? callback : PATHS.HOME)
