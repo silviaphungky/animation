@@ -17,6 +17,7 @@ import useUpdateAnimation from '@/service/hooks/useUpdateAnimation'
 import useGetAnimation from '@/service/hooks/useGetAnimation'
 
 import { useEditAnimation } from '@/store/useEditAnimation'
+import { SocketMessage, useSocket } from '@/store/useSocket'
 
 import { getLayerColors } from '@/utils/getLayerColors'
 import useDebounce from '@/hooks/useDebounce'
@@ -52,6 +53,7 @@ export default function Editor() {
 
   const animation = useEditAnimation((state) => state.animation)
   const setAnimation = useEditAnimation((state) => state.setAnimation)
+  const ws = useSocket((state) => state.ws)
 
   const [layers, setLayers] = useState<Array<Layer>>([])
 
@@ -61,6 +63,16 @@ export default function Editor() {
   )
 
   const { mutateAsync, isSuccess } = useUpdateAnimation()
+
+  useEffect(() => {
+    ws.addEventListener('message', (e) => {
+      const data = e.data
+      const parsedData = JSON.parse(data)
+      if (parsedData.type === SocketMessage.UPDATE_ANIMATION) {
+        setAnimation(animation)
+      }
+    })
+  }, [])
 
   useDebounce({
     func: async () => {
