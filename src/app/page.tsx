@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation'
 import { Shimmer, Spinner, UploadFileBtn } from '@/components'
 import OverlaySpinner from './components/OverlaySpinner'
 
-import useCreateAnimation from '@/service/hooks/useCreateAnimation'
-import useGetFeaturedPublicAnimations from '@/service/hooks/useGetFeaturedPublicAnimations'
-import useGetRecentEdit from '@/service/hooks/useGetRecentEdit'
+import useCreateAnimation from '@/services/hooks/useCreateAnimation'
+import useGetFeaturedPublicAnimations from '@/services/hooks/useGetFeaturedPublicAnimations'
+import useGetRecentEdit from '@/services/hooks/useGetRecentEdit'
 
 import { PATHS } from '@/constants/paths'
 import { useEditAnimation } from '@/store/useEditAnimation'

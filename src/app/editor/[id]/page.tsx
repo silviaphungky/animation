@@ -14,8 +14,8 @@ import {
 } from './components'
 import { Spinner } from '@/components'
 
-import useUpdateAnimation from '@/service/hooks/useUpdateAnimation'
-import useGetAnimation from '@/service/hooks/useGetAnimation'
+import useUpdateAnimation from '@/services/hooks/useUpdateAnimation'
+import useGetAnimation from '@/services/hooks/useGetAnimation'
 
 import { useEditAnimation } from '@/store/useEditAnimation'
 import { SocketMessage, useSocket } from '@/store/useSocket'
