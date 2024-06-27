@@ -27,7 +27,7 @@ const ColorTicker = ({ color, onChangeColor }: ColorTickerProps) => {
         }}
       />
       {isOpen && (
-        <div className="absolute z-10 p-2 bg-white shadow-lg">
+        <div className="absolute z-10 p-2 bg-white shadow-lg right-0">
           <RgbaColorPicker onChange={onChangeColor} />
         </div>
       )}
