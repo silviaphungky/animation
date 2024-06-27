@@ -2,8 +2,6 @@ import { useQuery } from '@tanstack/react-query'
 
 const baseUrl = process.env.NEXT_PUBLIC_REST_URL
 
-console.log(baseUrl, 'ads')
-
 const useGetAnimation = (id: string) => {
   return useQuery<{
     animation: {

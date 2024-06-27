@@ -167,7 +167,7 @@ export default function Editor() {
         />
       </Player>
       <RightBar selectedTab={selectedTab} setSelectedTab={setSelectedTab}>
-        {isLoading ? <Spinner /> : content[selectedTab]}
+        {isLoading || layers.length === 0 ? <Spinner /> : content[selectedTab]}
       </RightBar>
     </div>
   )
