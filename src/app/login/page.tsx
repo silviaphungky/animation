@@ -4,7 +4,7 @@ import { IconBatik } from '@/components/Icons'
 import { usernameKey } from '@/constants/key'
 import { PATHS } from '@/constants/paths'
 
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
 
 const Login = () => {
