@@ -6,12 +6,14 @@ import { useEditAnimation } from '@/store/useEditAnimation'
 import { SocketMessage, useSocket } from '@/store/useSocket'
 
 import { Abbv } from '../types'
+import { useParams } from 'next/navigation'
 
 const SettingMenu = ({
   setChangeCounter,
 }: {
   setChangeCounter: Dispatch<SetStateAction<number>>
 }) => {
+  const { id } = useParams()
   const ws = useSocket((state) => state.ws)
 
   const animation = useEditAnimation((state) => state.animation)
@@ -33,6 +35,7 @@ const SettingMenu = ({
     const message = {
       type: SocketMessage.UPDATE_ANIMATION,
       animation: updatedAnimation,
+      id,
     }
 
     ws.send(JSON.stringify(message))

@@ -73,7 +73,10 @@ export default function Editor() {
     ws.addEventListener('message', (e) => {
       const data = e.data
       const parsedData = JSON.parse(data)
-      if (parsedData.type === SocketMessage.UPDATE_ANIMATION) {
+      if (
+        parsedData.type === SocketMessage.UPDATE_ANIMATION &&
+        parsedData.id === id
+      ) {
         setAnimation(parsedData.message)
       } else if (parsedData.type === SocketMessage.NEW_CHAT) {
         setChats([

@@ -8,6 +8,7 @@ import { SocketMessage, useSocket } from '@/store/useSocket'
 
 import { Abbv, LottieLayer } from '../types'
 import { Layer } from '../page'
+import { useParams } from 'next/navigation'
 
 const LeftBar = ({
   layers,
@@ -16,6 +17,8 @@ const LeftBar = ({
   layers: Array<Layer>
   setChangeCounter: Dispatch<SetStateAction<number>>
 }) => {
+  const { id } = useParams()
+
   const animation = useEditAnimation((state) => state.animation)
   const setAnimation = useEditAnimation((state) => state.setAnimation)
   const onDeleteLayer = useEditAnimation((state) => state.onDeleteLayer)
@@ -44,6 +47,7 @@ const LeftBar = ({
     const message = {
       type: SocketMessage.UPDATE_ANIMATION,
       animation: updatedAnimation,
+      id,
     }
 
     ws.send(JSON.stringify(message))
@@ -70,6 +74,7 @@ const LeftBar = ({
     const message = {
       type: SocketMessage.UPDATE_ANIMATION,
       animation: updatedAnimation,
+      id,
     }
 
     ws.send(JSON.stringify(message))

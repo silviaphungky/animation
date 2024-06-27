@@ -7,6 +7,7 @@ import { SocketMessage, useSocket } from '@/store/useSocket'
 
 import { Abbv } from '../types'
 import { Layer } from '../page'
+import { useParams } from 'next/navigation'
 
 const ColorMenu = ({
   layers,
@@ -15,6 +16,8 @@ const ColorMenu = ({
   layers: Array<Layer>
   setChangeCounter: Dispatch<SetStateAction<number>>
 }) => {
+  const { id } = useParams()
+
   const ws = useSocket((state) => state.ws)
   const animation = useEditAnimation((state) => state.animation)
   const setAnimation = useEditAnimation((state) => state.setAnimation)
@@ -186,6 +189,7 @@ const ColorMenu = ({
     const message = {
       type: SocketMessage.UPDATE_ANIMATION,
       animation: updatedAnimation,
+      id,
     }
 
     ws.send(JSON.stringify(message))
