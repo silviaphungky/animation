@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { Input } from '@/components'
 
 import { useEditAnimation } from '@/store/useEditAnimation'
-import { useSocket } from '@/store/useSocket'
+import { SocketMessage, useSocket } from '@/store/useSocket'
 
 import { Abbv } from '../types'
 
@@ -31,7 +31,7 @@ const SettingMenu = ({
     updatedAnimation[type] = value
 
     const message = {
-      type: 'updated_animation',
+      type: SocketMessage.UPDATE_ANIMATION,
       animation: updatedAnimation,
     }
 

@@ -42,7 +42,7 @@ const LeftBar = ({
     onDeleteLayer(layers as Array<LottieLayer>, layerIndex)
 
     const message = {
-      type: 'updated_animation',
+      type: SocketMessage.UPDATE_ANIMATION,
       animation: updatedAnimation,
     }
 

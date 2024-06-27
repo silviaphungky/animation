@@ -10,6 +10,7 @@ import {
   SettingMenu,
   ColorMenu,
   ChatMenu,
+  BlockingMenu,
 } from './components'
 import { Spinner } from '@/components'
 
@@ -23,6 +24,7 @@ import { getLayerColors } from '@/utils/getLayerColors'
 import useDebounce from '@/hooks/useDebounce'
 import { menu } from './components/RightBar'
 import { Abbv, LottieAssets } from './types'
+import { usernameKey } from '@/constants/key'
 
 export interface Layer {
   id: string | number
@@ -55,8 +57,8 @@ export default function Editor() {
   const setAnimation = useEditAnimation((state) => state.setAnimation)
   const ws = useSocket((state) => state.ws)
 
+  const [username, setUsername] = useState('')
   const [layers, setLayers] = useState<Array<Layer>>([])
-
   const [changeCounter, setChangeCounter] = useState(0)
   const [selectedTab, setSelectedTab] = useState(
     menu[0] as 'Color' | 'Setting' | 'Chat'
@@ -69,9 +71,12 @@ export default function Editor() {
       const data = e.data
       const parsedData = JSON.parse(data)
       if (parsedData.type === SocketMessage.UPDATE_ANIMATION) {
-        setAnimation(animation)
+        setAnimation(parsedData.message)
       }
     })
+
+    const name = localStorage.getItem(usernameKey) as string
+    setUsername(name)
   }, [])
 
   useDebounce({
@@ -159,9 +164,17 @@ export default function Editor() {
   }, [animation])
 
   const content = {
-    Color: <ColorMenu layers={layers} setChangeCounter={setChangeCounter} />,
-    Setting: <SettingMenu setChangeCounter={setChangeCounter} />,
-    Chat: <ChatMenu />,
+    Color: username ? (
+      <ColorMenu layers={layers} setChangeCounter={setChangeCounter} />
+    ) : (
+      <BlockingMenu />
+    ),
+    Setting: username ? (
+      <SettingMenu setChangeCounter={setChangeCounter} />
+    ) : (
+      <BlockingMenu />
+    ),
+    Chat: username ? <ChatMenu /> : <BlockingMenu />,
   }
 
   return (
