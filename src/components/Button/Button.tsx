@@ -1,7 +1,6 @@
 import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
-  HTMLProps,
   ReactNode,
   forwardRef,
 } from 'react'

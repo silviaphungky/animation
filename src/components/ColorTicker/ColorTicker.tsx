@@ -1,5 +1,5 @@
 import useClickOutside from '@/hooks/useClickOutside'
-import { memo, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { RgbaColorPicker } from 'react-colorful'
 
 interface ColorTickerProps {

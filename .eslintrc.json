@@ -14,7 +14,6 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
-    ],
-    "max-len": [2, { "code": 110, "tabWidth": 4, "ignoreUrls": true }]
+    ]
   }
 }
