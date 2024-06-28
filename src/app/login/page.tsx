@@ -1,5 +1,6 @@
 'use client'
 import { IconBatik } from '@/components/Icons'
+import { LoginForm } from './components'
 
 const Login = () => {
   return (
@@ -10,6 +11,7 @@ const Login = () => {
       <div className="absolute right-0 top-[3rem]">
         <IconBatik />
       </div>
+      <LoginForm />
     </div>
   )
 }
