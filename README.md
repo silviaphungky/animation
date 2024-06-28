@@ -50,3 +50,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   4. React Tan Query -> API fetcher
   5. @lottiefiles/react-lottie-player -> Lottie player
   6. MongoDB + NodeJs + ExpressJs -> service for keep track animation changes (https://github.com/silviaphungky/server-animation)
+
+**Improvement Backlog**
+-
+1. Subscribe and Unsubscribe socket data based on animation ID
