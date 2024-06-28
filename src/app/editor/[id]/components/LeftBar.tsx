@@ -8,7 +8,8 @@ import { SocketMessage, useSocket } from '@/store/useSocket'
 
 import { Abbv, LottieLayer } from '../types'
 import { Layer } from '../page'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
+import { PATHS } from '@/constants/paths'
 
 const LeftBar = ({
   layers,
@@ -17,6 +18,7 @@ const LeftBar = ({
   layers: Array<Layer>
   setChangeCounter: Dispatch<SetStateAction<number>>
 }) => {
+  const router = useRouter()
   const { id } = useParams()
 
   const animation = useEditAnimation((state) => state.animation)
@@ -84,6 +86,18 @@ const LeftBar = ({
 
   return (
     <div className="h-[100vh] bg-white p-6 px-3 shadow-md w-[15rem] overflow-auto">
+      <div className="flex gap-2 items-center mb-4">
+        <div className="rotate-180">
+          <IconChevron color="#000" />
+        </div>
+        <div
+          className="cursor-pointer text-sm"
+          onClick={() => router.push(PATHS.HOME)}
+        >
+          Back
+        </div>
+      </div>
+
       <div className="relative">
         {layers.map((layer, layerIndex) => {
           let children: Array<{
