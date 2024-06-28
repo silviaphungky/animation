@@ -35,7 +35,7 @@ const ChatMenu = () => {
         ])
       }
     })
-  }, [])
+  }, [chats])
 
   const handleSendMessage = (value: { message: string }) => {
     const message = value.message
@@ -47,7 +47,6 @@ const ChatMenu = () => {
       sender,
       time: dayjs(new Date()).format('HH:mm'),
     }
-
     setChats([
       ...chats,
       {

@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-4 mb-8 md:grid-cols-7 ">
-          {recentEdit.animations.map((item) => (
+          {recentEdit.animations.reverse().map((item) => (
             <div
               key={item._id}
               className="relative cursor-pointer border-[1px] border-slate-300 rounded-lg"
