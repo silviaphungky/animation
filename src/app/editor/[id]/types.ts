@@ -20,6 +20,7 @@ export enum Abbv {
   GROUP_SHAPES = 'it',
   GRADIENT_COLORS = 'g',
   FRAME_RATE = 'fr',
+  ANIMATED = 'a',
 }
 
 export interface LottieJSON {
@@ -40,8 +41,14 @@ export interface LottieShape {
     | Abbv.FILL
     | Abbv.GRADIENT_STROKE
     | Abbv.GRADIENT_FILL
+    | Abbv.GROUP
   [Abbv.COLOR]: {
-    [Abbv.KEYFRAMES]: Array<number>
+    [Abbv.ANIMATED]: 0 | 1
+    [Abbv.KEYFRAMES]:
+      | Array<number>
+      | Array<{
+          s: Array<number>
+        }>
   }
   [Abbv.GROUP_SHAPES]: Array<LottieShape>
   [Abbv.GRADIENT_COLORS]: {
