@@ -58,4 +58,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   a. default scroll chat to the bottom
   b. fix size canvas
   c. enable delete recently workspace
-3. tidy up color mapping function
+3. Tidy up color mapping function and handle more edge case for the layer type
