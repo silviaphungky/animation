@@ -54,3 +54,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 **Improvement Backlog**
 -
 1. Subscribe and Unsubscribe socket data based on animation ID
+2. UX improvement:
+  a. default scroll chat to the bottom
+  b. fix size canvas
+  c. enable delete recently workspace
+3. tidy up color mapping function
