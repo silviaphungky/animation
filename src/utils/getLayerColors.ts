@@ -15,17 +15,44 @@ export const getLayerColors = (shapes: Array<LottieShape>) => {
     groupShapeIndex?: number
   ) => {
     if (shape[Abbv.TYPE] === Abbv.STROKE || shape[Abbv.TYPE] === Abbv.FILL) {
-      const rgb = `rgb(${shape[Abbv.COLOR][Abbv.KEYFRAMES]
-        .map((item: number) => lottieColorToRgba(item))
-        .join(', ')})`
-      colors = [...colors, rgb]
-      shapeIndexes =
-        shapeIndex !== undefined ? [...shapeIndexes, shapeIndex] : shapeIndexes
-      groupShapeIndexes =
-        groupShapeIndex !== undefined
-          ? [...groupShapeIndexes, groupShapeIndex]
-          : groupShapeIndexes
-      gradientIndexes = [...gradientIndexes, undefined]
+      const isAnimated = shape[Abbv.COLOR][Abbv.ANIMATED] === 1
+
+      if (!isAnimated) {
+        const colorCode = shape[Abbv.COLOR][Abbv.KEYFRAMES] as Array<number>
+        const rgb = `rgb(${colorCode
+          .map((item: number) => lottieColorToRgba(item))
+          .join(', ')})`
+        colors = [...colors, rgb]
+
+        shapeIndexes =
+          shapeIndex !== undefined
+            ? [...shapeIndexes, shapeIndex]
+            : shapeIndexes
+        groupShapeIndexes =
+          groupShapeIndex !== undefined
+            ? [...groupShapeIndexes, groupShapeIndex]
+            : groupShapeIndexes
+        gradientIndexes = [...gradientIndexes, undefined]
+      } else {
+        const keyframes = shape[Abbv.COLOR][Abbv.KEYFRAMES] as Array<{
+          s: Array<number>
+        }>
+        keyframes.forEach((item, index) => {
+          const rgb = `rgb(${item.s
+            .map((item: number) => lottieColorToRgba(item))
+            .join(', ')})`
+          colors = [...colors, rgb]
+          shapeIndexes =
+            shapeIndex !== undefined
+              ? [...shapeIndexes, shapeIndex]
+              : shapeIndexes
+          groupShapeIndexes =
+            groupShapeIndex !== undefined
+              ? [...groupShapeIndexes, groupShapeIndex]
+              : groupShapeIndexes
+          gradientIndexes = [...gradientIndexes, index]
+        })
+      }
     } else if (shape[Abbv.TYPE] === Abbv.GRADIENT_STROKE) {
       const keyframes = (shape[Abbv.GRADIENT_COLORS][Abbv.KEYFRAMES][
         Abbv.KEYFRAMES
